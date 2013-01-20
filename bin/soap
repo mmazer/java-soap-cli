@@ -1,0 +1,16 @@
+#! /bin/sh
+
+JAVA=java
+TOP=`dirname $0`/..
+LIB=${TOP}/lib
+MAIN=SOAPClient
+CPATH=${LIB}/classes
+
+for j in $LIB/*.jar
+do
+    CPATH=$CPATH:${j}
+done
+
+$JAVA -classpath $CPATH $MAIN "$@"
+
+
