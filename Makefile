@@ -12,3 +12,6 @@ build: $(CLASS_DIR)
 
 $(CLASS_DIR):
 	@mkdir -p $(CLASS_DIR)
+
+clean:
+	@rm -rf $(CLASS_DIR)
