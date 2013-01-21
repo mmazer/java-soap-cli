@@ -55,7 +55,7 @@ public class SOAPClient {
         PostMethod post = new PostMethod(url.toExternalForm());
 
         post.setRequestEntity(new FileRequestEntity(file, SOAP_CONTENT_TYPE));
-        post.setContentChunked(true);
+        post.setContentChunked(cl.hasOption('c'));
 
         if (cl.hasOption('U')) {
             String userAgent = cl.getOptionValue('U');
@@ -97,6 +97,7 @@ public class SOAPClient {
 
         Options options = new Options();
         options.addOption(new Option("a", "soap-action", true, "SOAP action"));
+        options.addOption(new Option("c", "chunked", false, "use chunked transfer encoding"));
         options.addOption(new Option("e", "expect-continue", false, "HTTP Expect-Continue"));
         options.addOption(new Option("f", "soap-request", true, "SOAP request file"));
         options.addOption(new Option("H", "header", true, "HTTP header"));
